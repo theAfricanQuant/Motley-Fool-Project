@@ -35,7 +35,7 @@ def find_random_three_articles():
         data = json.load(content)
 
         random_articles = []
-        articles = data['results']
+        articles = data["results"]
 
         while len(random_articles) != 3:
             rand = random.choice(articles)
@@ -43,4 +43,3 @@ def find_random_three_articles():
                 random_articles.append(rand)
 
         return random_articles
-
