@@ -1,9 +1,9 @@
 from django.urls import path
 
-from .views import HomePageView, ArticlesPageView
+from .views import HomePageView, ArticleDetailPage
 
 
 urlpatterns = [
     path('', HomePageView.as_view(), name='homepage'),
-    path('articles/', ArticlesPageView.as_view(), name='articles_page'),
+    path('article/<uuid:article_uuid>', ArticleDetailPage.as_view(), name='article_page'),
 ]
