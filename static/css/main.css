@@ -1,0 +1,25 @@
+/* 
+    Main CSS for the Motley Fool App
+*/
+
+/* GLOBALS */
+html, body {
+    min-height: 100vh;
+}
+
+/* TYPOGRAPHY */
+
+
+/* AREAS */
+.content-wrapper {
+    flex-grow: 1;
+}
+
+/* FOOTER */
+#main-footer {
+    background: #343a40;
+    color: white;
+    padding: 1em;
+    
+}
+
