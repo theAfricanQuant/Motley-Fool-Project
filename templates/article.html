@@ -2,13 +2,21 @@
 
 
 {% block content %}
-
-<p>This is the Article page for {{ article.headline }}</p>
-
-
-
-
-{% include "sidebar.html" %}
+<main class="content-wrapper">
+    <div class="container">        
+        <div class="row my-5">
+            <div class="col">
+                <h1>{{ article.headline }}</h1>
+                <b class="text-muted">{{ article.byline }} | {{ article.modified }}</b>
+                <hr>
+                {{ article.body | safe }}
+            </div>
+            <div class="col-md-3">
+                {% include "sidebar.html" %}
+            </div>
+        </div>
+    </div>  
+</main>
     
 {% endblock content %}
 

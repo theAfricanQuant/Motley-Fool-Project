@@ -15,11 +15,7 @@ html, body {
     flex-grow: 1;
     margin-bottom: 5em;
 }
-/* .flex-1 {
-    flex-grow: 1;
-} */
 
-/* FOOTER */
 #main-footer {
     background: #343a40;
     color: white;
