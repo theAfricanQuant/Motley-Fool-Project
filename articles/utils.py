@@ -23,6 +23,7 @@ def find_headline_article():
         for result in data["results"]:
             for tag in result["tags"]:
                 if tag["slug"] == "10-promise":
+                    uuid = result["uuid"]
                     images = result["images"]
                     title = result["headline"]
                     author = result["byline"]
@@ -35,6 +36,7 @@ def find_headline_article():
                         "author": author,
                         "promo": promo,
                         "modified": date,
+                        "uuid": uuid,
                     }
 
                     matched_articles.append(article)
@@ -54,6 +56,8 @@ def find_random_three_articles():
 
         while len(random_articles) != 3:
             rand = random.choice(articles)
+
+            uuid = rand["uuid"]
             images = rand["images"]
             title = rand["headline"]
             author = rand["byline"]
@@ -66,9 +70,22 @@ def find_random_three_articles():
                 "author": author,
                 "promo": promo,
                 "modified": date,
+                "uuid": uuid,
             }
 
             if article not in random_articles:
                 random_articles.append(article)
 
         return random_articles
+
+
+def fetch_single_article(uuid):
+    """
+    Fetches a single article from the content_api by UUID
+    """
+    with open(CONTENT_API, "r") as content:
+        data = json.load(content)
+
+    for article in data["results"]:
+        if article["uuid"] == uuid:
+            return article
