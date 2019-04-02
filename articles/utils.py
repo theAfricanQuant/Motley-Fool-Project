@@ -1,6 +1,7 @@
 import os
 import json
 import random
+import datetime
 
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -22,7 +23,21 @@ def find_headline_article():
         for result in data["results"]:
             for tag in result["tags"]:
                 if tag["slug"] == "10-promise":
-                    matched_articles.append(result)
+                    images = result["images"]
+                    title = result["headline"]
+                    author = result["byline"]
+                    promo = result["promo"]
+                    date = datetime.datetime.strptime(result["modified"], "%Y-%m-%dT%H:%M:%SZ")
+
+                    article = {
+                        "images": images,
+                        "title": title,
+                        "author": author,
+                        "promo": promo,
+                        "modified": date,
+                    }
+
+                    matched_articles.append(article)
 
         return matched_articles[0]
 
@@ -39,7 +54,21 @@ def find_random_three_articles():
 
         while len(random_articles) != 3:
             rand = random.choice(articles)
-            if rand not in random_articles:
-                random_articles.append(rand)
+            images = rand["images"]
+            title = rand["headline"]
+            author = rand["byline"]
+            promo = rand["promo"]
+            date = datetime.datetime.strptime(rand["modified"], "%Y-%m-%dT%H:%M:%SZ")
+
+            article = {
+                "images": images,
+                "title": title,
+                "author": author,
+                "promo": promo,
+                "modified": date,
+            }
+
+            if article not in random_articles:
+                random_articles.append(article)
 
         return random_articles
