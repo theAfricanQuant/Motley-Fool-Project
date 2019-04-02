@@ -14,6 +14,9 @@ html, body {
 .content-wrapper {
     flex-grow: 1;
 }
+/* .flex-1 {
+    flex-grow: 1;
+} */
 
 /* FOOTER */
 #main-footer {

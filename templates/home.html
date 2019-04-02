@@ -5,16 +5,24 @@
 <main class="content-wrapper">
     <div class="container">
         <div class="row">
-            <div class="col card my-5">
+            <div class="card my-5">
                 <div class="row no-gutters">
-                    <div class="col-md-4">
-                        <img src="..." class="card-img" alt="...">
+                    <div class="col-md-6">
+                        {% for image in main_article.images %}
+                            <img src="{{ image.url }}" class="card-img" alt="{{ image.name }}">
+                        {% endfor %}
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-md-6">
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                            <h5 class="card-title mb-3"><a href="TODO:">{{ main_article.headline }}</a></h5>
+                            <p class="card-text">{{ main_article.promo }}</p>
+                            <p class="card-footer bg-transparent mt-3">
+                                <b class="text-muted">
+                                    {% for name in main_article.authors %}
+                                        {{ name.byline }} | {{ main_article.modified }}
+                                    {% endfor %}
+                                </b>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -53,7 +61,7 @@
 
 
 </main>
-    
+
 {% endblock content %}
 
 
