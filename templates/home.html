@@ -12,7 +12,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="card-body">
-                            <h4 class="card-title mb-3"><a href="TODO:">{{ main_article.title }}</a></h4>
+                            <h4 class="card-title mb-3"><a href="{% url 'article_page' main_article.uuid %}">{{ main_article.title }}</a></h4>
                             <small class="card-text">
                                 <b class="text-muted">
                                     {{ main_article.author }} | {{ main_article.modified | date:"F n, Y" }}
@@ -32,7 +32,7 @@
                     <div class="card">
                             <img src="{{ article.images.0.url }}" class="card-img-top" alt="{{ article.images.0.name }}">
                         <div class="card-body">
-                            <h5 class="card-title"><a href="TODO:">{{ article.title }}</a></h5>
+                            <h5 class="card-title"><a href="{% url 'article_page' article.uuid %}">{{ article.title }}</a></h5>
                             <small class="card-text">
                                 <b class="text-muted">
                                     {{ article.author }} | {{ article.modified | date:"F n, Y" }}
