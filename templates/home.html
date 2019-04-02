@@ -15,9 +15,7 @@
                             <h5 class="card-title mb-3"><a href="TODO:">{{ main_article.headline }}</a></h5>
                             <p class="card-text">
                                 <b class="text-muted">
-                                    {% for name in main_article.authors %}
-                                        {{ name.byline }} | {{ main_article.modified }}
-                                    {% endfor %}
+                                    {{ main_article.authors.0.byline }} | {{ main_article.modified }}
                                 </b>
                             </p>
                             <hr>
@@ -37,9 +35,7 @@
                             <h5 class="card-title"><a href="TODO:">{{ article.headline }}</a></h5>
                             <p class="card-text">
                                 <b class="text-muted">
-                                    {% for name in article.authors %}
-                                        {{ name.byline }} | {{ article.modified }}
-                                    {% endfor %}
+                                    {{ article.authors.0.byline }} | {{ article.modified }}
                                 </b>
                             </p>                        
                             <hr>
