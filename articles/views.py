@@ -1,7 +1,12 @@
 # from django.shortcuts import render
 from django.views.generic import TemplateView
 
-from .utils import find_headline_article, find_random_three_articles, fetch_single_article
+from .utils import (
+    find_headline_article,
+    find_random_three_articles,
+    fetch_single_article,
+    find_three_random_quotes,
+)
 
 
 class HomePageView(TemplateView):
@@ -24,4 +29,6 @@ class ArticleDetailPage(TemplateView):
         uuid = self.kwargs["article_uuid"]
         article = fetch_single_article(str(uuid))
         context["article"] = article
+        quotes = find_three_random_quotes()
+        context["quotes"] = quotes
         return context

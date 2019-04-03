@@ -1,5 +1,5 @@
 <aside col id="sidebar">
-    <section class="related-tickers">
+    <!-- <section class="related-tickers">
         <div class="block-title">
             <hr><h3>Stocks</h3>
         </div>
@@ -87,12 +87,30 @@
                 </aside>
             </div>
         </div>
-    </section>
-    <section class="read-more-section">
-        <div class="block-title">
-            <hr><h4>Read More</h4>
+    </section> -->
+    
+    <section>
+        <div class="mb-3">
+            <hr>
+            <h3>Stocks</h3>
         </div>
-        <ul class="two-line-list">
+
+        {% for quote in quotes %}
+            <div>
+                <h4>{{ quote.name }}</h4>
+                <h6>{{ quote.exchange }}</h6>
+                <p>${{ quote.close }} | ${{ quote.change }} | {{ quote.percent | floatformat:3 }}%</p>
+
+            </div>            
+        {% endfor %}
+    </section>
+    
+    <section class="mt-4">
+        <div class="mb-4">
+            <hr>
+            <h3>Read More</h>
+        </div>
+        <ul>
             <li><a href="#">It is a long established fact that a reader</a></li>
             <li><a href="#">Many desktop publishing packages and web page editors now use</a></li>
             <li><a href="#">Contrary to popular belief, Lorem Ipsum is not simply random text</a></li>
