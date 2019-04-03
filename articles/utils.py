@@ -7,6 +7,7 @@ import datetime
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 CONTENT_API = os.path.join(BASE_DIR, "api_files/content_api.json")
+QUOTES_API = os.path.join(BASE_DIR, "api_files/quotes_api.json")
 
 
 def find_headline_article():
@@ -15,7 +16,7 @@ def find_headline_article():
      a new list. The first artilc in the list is returned when the fuction is called.
     """
 
-    with open(CONTENT_API, "r") as content:
+    with open(CONTENT_API, "r", encoding="utf8") as content:
         data = json.load(content)
 
         matched_articles = []
@@ -48,7 +49,7 @@ def find_random_three_articles():
     """
     Returns a list of 3 random results (articles) from the provided content_api.json fle.
     """
-    with open(CONTENT_API, "r") as content:
+    with open(CONTENT_API, "r", encoding="utf8") as content:
         data = json.load(content)
 
         random_articles = []
@@ -83,9 +84,34 @@ def fetch_single_article(uuid):
     """
     Fetches a single article from the content_api by UUID
     """
-    with open(CONTENT_API, "r") as content:
+    with open(CONTENT_API, "r", encoding="utf8") as content:
         data = json.load(content)
 
-    for article in data["results"]:
-        if article["uuid"] == uuid:
-            return article
+        for article in data["results"]:
+            if article["uuid"] == uuid:
+                return article
+
+
+def find_three_random_quotes():
+    """
+    Returns a list of 3 random results (quotes) from the provided quotes_api.json fle and exracts
+    the three metrics needed for display on the site. Each quote is returned as a dictionary.
+    """
+    with open(QUOTES_API, "r", encoding="utf8") as quotes:
+        data = json.load(quotes)
+
+        random_quotes = []
+
+        while len(random_quotes) != 3:
+            rand = random.choice(data)
+
+            close_price = rand["ClosePrice"]
+            price_change = rand["Change"]
+            percentage_change = rand["PercentChange"]
+
+            quote = {"close": close_price, "change": price_change, "percent": percentage_change}
+
+            if quote not in random_quotes:
+                random_quotes.append(quote)
+
+        return random_quotes
