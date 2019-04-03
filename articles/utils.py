@@ -105,11 +105,19 @@ def find_three_random_quotes():
         while len(random_quotes) != 3:
             rand = random.choice(data)
 
+            name = rand["ComanyName"]
+            exchange = rand["ExchangeName"]
             close_price = rand["ClosePrice"]["Amount"]
             price_change = rand["Change"]["Amount"]
             percentage_change = rand["PercentChange"]["Value"]
 
-            quote = {"close": close_price, "change": price_change, "percent": percentage_change}
+            quote = {
+                "close": close_price,
+                "change": price_change,
+                "percent": percentage_change,
+                "name": name,
+                "exchange": exchange,
+            }
 
             if quote not in random_quotes:
                 random_quotes.append(quote)
