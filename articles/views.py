@@ -18,10 +18,13 @@ class HomePageView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+
         main_article = find_headline_article()
-        extra_articles = find_random_three_articles()
         context["main_article"] = main_article
+
+        extra_articles = find_random_three_articles()
         context["random_articles"] = extra_articles
+
         return context
 
 
