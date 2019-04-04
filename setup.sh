@@ -1,13 +1,21 @@
-#! /usr/bin/bash
+#!/bin/sh
 
-pip install pipenv
+which pip > /dev/null 2>&1
+if [ $? -ne 0 ]; then
+    echo "pip is not installed, exiting"
+    exit 1
+fi
 
-pipenv install
+pip install --upgrade pipenv
+if [ $? -ne 0 ]; then
+    echo "failed to install pipenv, exiting"
+    exit 1
+fi
 
-pipenv shell
+pipenv install --skip-lock
+if [ $? -ne 0 ]; then
+    echo "pipenv install failed, exiting"
+    exit 1
+fi
 
-python manage.py makemigrations
-
-python manage.py migrate
-
-python manage.py runserver
+exit 0
