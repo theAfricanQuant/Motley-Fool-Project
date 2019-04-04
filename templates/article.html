@@ -10,6 +10,22 @@
                 <b class="text-muted">{{ article.byline }} | {{ article.modified }}</b>
                 <hr>
                 {{ article.body | safe }}
+                <hr>
+
+                <form action="" method="post">
+                    {% csrf_token %}
+                    
+                    <input type="hidden" name="article_uuid" value="{{ article.uuid }}"">
+                    
+                    <div class="form-group">
+                        {{ form.comment }}
+                    </div>
+
+
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+                <hr>
+
             </div>
             <div class="col-md-3">
                 {% include "sidebar.html" %}
