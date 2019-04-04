@@ -41,6 +41,9 @@ class ArticleDetailPage(FormView):
         quotes = find_three_random_quotes()
         context["quotes"] = quotes
 
+        comments = Comment.objects.filter(article_uuid=uuid)
+        context["comments"] = comments
+
         return context
 
     def form_valid(self, form):
