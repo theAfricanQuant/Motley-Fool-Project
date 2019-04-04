@@ -4,8 +4,10 @@
 {% block content %}
 <main class="content-wrapper">
     <div class="container">
+
+        <!-- Headline Article -->
         <div class="row">
-            <div class="card my-5 homepage-card">
+            <div class="card my-5 homepage-card">                
                 <div class="row no-gutters">
                     <div class="col-md-6">
                         <img src="{{ main_article.images.0.url }}" class="card-img" alt="{{ main_article.images.0.name }}">
@@ -26,6 +28,7 @@
             </div>
         </div>
 
+        <!-- Extra articles -->
         <div class="row">
             <div class="card-deck">
                 {% for article in random_articles %}
@@ -49,7 +52,3 @@
 </main>
 
 {% endblock content %}
-
-
-{% block scripts %}
-{% endblock scripts %}

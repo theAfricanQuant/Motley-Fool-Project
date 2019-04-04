@@ -7,10 +7,14 @@
     <div class="container">        
         <div class="row my-5">
             <div class="col">
+
+                <!-- Main Article -->
                 <h1>{{ article.headline }}</h1>
                 <b class="text-muted">{{ article.byline }} | {{ article.modified }}</b>
                 <hr>
                 {{ article.body | safe }}
+
+                <!-- Comment Form -->
                 <hr>
                 <h3 class="my-3">Leave a comment...</h3>
                 <form action="" method="post">
@@ -23,6 +27,7 @@
                 </form>
                 <hr>
 
+                <!-- Comment Section -->
                 <div>
                     {% for comment in comments %}
                         <div class="card bg-light mb-3">
@@ -37,18 +42,18 @@
                         </div>
                     {% endfor %}
                 </div>
-
             </div>
+
+            <!-- Load Sidebar  Partial-->
             <div class="col-md-3">
                 {% include "sidebar.html" %}
             </div>
         </div>
     </div>  
 </main>
-    
 {% endblock content %}
 
-
+<!-- Extra scripts -->
 {% block scripts %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="{% static 'js/randomator.js' %}"></script>
