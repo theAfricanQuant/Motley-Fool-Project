@@ -10,7 +10,7 @@ Clone this repo and `cd` into the project directory.
 
 Run `setup.sh` to install `pipenv` and all project dependencies.
 
-``` shell
+```shell
 # Activate the new virtual environment
 pipenv shell
 
@@ -23,6 +23,7 @@ python3 manage.py migrate
 # Run the dev server
 python3 manage.py runserver --insecure
 
-# Appending --insecure ensures the static content is served even when Debug=False. Alternativly change Debug=True and run without.
+# Appending --insecure ensures the static content is served even when Debug=False. 
+# Alternativly change Debug=True and run without.
 
 # Enjoy!
