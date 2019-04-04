@@ -41,6 +41,9 @@ class ArticleDetailPage(FormView):
         article = fetch_single_article(str(uuid))
         context["article"] = article
 
+        extra_articles = find_random_three_articles()
+        context["random_articles"] = extra_articles
+
         quotes = find_three_random_quotes()
         context["quotes"] = quotes
 
