@@ -10,6 +10,8 @@ Clone this repo and `cd` into the project directory.
 
 Run `setup.sh` to install `pipenv` and all project dependencies.
 
+Then run the following commands:
+
 ```shell
 # Activate the new virtual environment
 pipenv shell
