@@ -1,6 +1,6 @@
 # from django.shortcuts import render
 from django.views.generic import TemplateView, FormView
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.shortcuts import HttpResponseRedirect
 
 from .models import Comment
@@ -44,7 +44,7 @@ class ArticleDetailPage(FormView):
         quotes = find_three_random_quotes()
         context["quotes"] = quotes
 
-        comments = Comment.objects.filter(article_uuid=uuid)
+        comments = Comment.objects.filter(article_uuid=uuid).order_by('-datetime')
         context["comments"] = comments
 
         return context
@@ -56,4 +56,4 @@ class ArticleDetailPage(FormView):
         new_comment = Comment(comment=comment, article_uuid=uuid)
         new_comment.save()
 
-        return HttpResponseRedirect(self.get_success_url())
+        return HttpResponseRedirect(reverse('article_page', kwargs={'article_uuid': uuid}))
