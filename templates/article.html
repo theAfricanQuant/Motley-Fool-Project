@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 
+{% load static %}
 
 {% block content %}
 <main class="content-wrapper">
@@ -49,4 +50,6 @@
 
 
 {% block scripts %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="{% static 'js/randomator.js' %}"></script>
 {% endblock scripts %}
