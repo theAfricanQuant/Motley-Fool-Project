@@ -40,7 +40,6 @@ INSTALLED_APPS = [
 
     # Added Apps
     'articles.apps.ArticlesConfig',
-    'crispy_forms'
 ]
 
 MIDDLEWARE = [
