@@ -121,6 +121,5 @@ def find_three_random_quotes():
 
             if quote not in random_quotes:
                 random_quotes.append(quote)
-                print(quote)
 
         return random_quotes
