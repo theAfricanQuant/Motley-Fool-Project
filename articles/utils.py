@@ -27,7 +27,7 @@ def find_headline_article():
             # Search thorugh articles that have multiple tags
             for tag in result["tags"]:
                 # Find matching slug
-                if tag["slug"] == "10-promise":
+                if tag["slug"] == "msn":
                     uuid = result["uuid"]
                     images = result["images"]
                     title = result["headline"]
@@ -119,6 +119,7 @@ def find_three_random_quotes():
             close_price = rand["ClosePrice"]["Amount"]
             price_change = rand["Change"]["Amount"]
             percentage_change = rand["PercentChange"]["Value"]
+            description = rand["Description"]
 
             # Create a dictionary of needed values per quote
             quote = {
@@ -127,6 +128,7 @@ def find_three_random_quotes():
                 "percent": percentage_change,
                 "name": name,
                 "exchange": exchange,
+                "description": description
             }
 
             # Check to make sure the quote isn't alredy in the list

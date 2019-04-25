@@ -13,6 +13,8 @@
                 <b class="text-muted">{{ article.byline }} | {{ article.modified }}</b>
                 <hr>
                 {{ article.body | safe }}
+                <hr>
+                <p>{{ article.pitch.text | safe }}</p>
 
                 <!-- Comment Form -->
                 <hr>

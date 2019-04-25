@@ -1,3 +1,5 @@
+{% load quotes %}
+
 <aside col id="sidebar">
     <!-- Stocks Section -->
     <section>
@@ -8,7 +10,7 @@
 
         {% for quote in quotes %}
             <div class="quote">
-                <h4>{{ quote.name }}</h4>
+                <h4 title="{% quotes_tag quote %}">{{ quote.name }}</h4>
                 <h6>{{ quote.exchange }}</h6>
                 <p>${{ quote.close }} | ${{ quote.change }} | {{ quote.percent | floatformat:3 }}%</p>
 
